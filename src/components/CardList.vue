@@ -29,7 +29,7 @@ export default {
 <style >
  .card-list {
         display:flex;
-        flex-wrap: wrap;
+        flex-wrap: wrap; 
         justify-content: center;
         gap: 50px;
         /* flex-direction:row; */

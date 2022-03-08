@@ -8,7 +8,7 @@ import About from './views/About.vue'
 import Users from './views/Users.vue'
 import UserDetail from './views/UserDetail.vue'
 
-//routes 정해줌. 경로지정
+//routes 정해줌. 경로지정a
 const routes = [
     { path: '/', component: Home, name:'home' },    
     { path: '/about', component: About , name:'about'},   

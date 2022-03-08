@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fun React!</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/immer/9.0.6/immer.umd.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/babel-standalone@6/babel.min.js"
+    ></script>
+    <script type="text/babel">
+      const { useEffect, useState } = React;
+      const { produce } = immer;
+
+      function Sample() {
+        console.log('rendered')
+        const [profile, setProfile] = useState({
+          user: { name: "Durian", age: 1}
+        })
+
+        const handleClick = () => {
+          console.log("invoked handler")
+          // profile.user.name = 'Coco'
+          // console.log(profile)
+          // let newProfile = profile;
+          // newProfile.user.name = "Coco"
+          // setProfile(newProfile)
+          
+          // setProfile(prevProfile => {
+          //   let newProfile = prevProfile
+          //   return newProfile
+          // })
+
+          // setProfile(prevProfile => {
+          //   let newProfile = { ...prevProfile }
+          //   newProfile.name = 'coco'
+          //   return newProfile
+          // })
+
+          setProfile(prevProfile => ({
+            ...prevProfile, 
+            user: {
+              ...prevProfile.user,
+              name: "Coco"
+            }
+          }))
+          
+          // let newProfile = produce(profile, draft => {
+          //   draft.user.name = "Coco"
+          // })
+          // setProfile(newProfile)
+        }
+
+        return (
+          <div>
+            <button onClick={handleClick}>click</button>
+            <p>{profile.user.name}</p>
+          </div>
+        )
+      }
+
+      ReactDOM.render(<Sample />, document.getElementById("root"))
+    </script>
+  </body>
+</html>
